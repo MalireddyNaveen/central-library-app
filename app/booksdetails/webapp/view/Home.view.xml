@@ -1,0 +1,38 @@
+<mvc:View
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    controllerName="com.app.booksdetails.controller.Home"
+>
+    <App>
+        <Page
+            title="{i18n>title}"
+            class="page"
+        >
+            <headerContent>
+                <Title
+                    class="LOA"
+                    text="Library of ARTIHCUS"
+                />
+                <Text text="Books" />
+                <Text text="Writers" />
+                <Text text="sign up" />
+ 
+                <MenuButton text="Login">
+                    <Menu>
+                        <items>
+                            <MenuItem
+                                text="User Login"
+                                press="userlogin"
+                            />
+                            <MenuItem
+                                text="Admin Login"
+                                press="AdminLogin"
+                            />
+                        </items>
+                    </Menu>
+                </MenuButton>
+            </headerContent>
+            <Text class="homepagetext" text="I do believe something very magical can happen when you read a good book -J.K.Rowling"/>
+        </Page>
+    </App>
+</mvc:View>

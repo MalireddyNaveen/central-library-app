@@ -1,0 +1,14 @@
+ISBN,title,quantity,author,genre,publisher,language,price,availability,users_ID
+0-5582-2179-3,harrypotter,25,Jkrowling,Adventure,Jk Publishers,English,2000,available,48d98520-1375-11ef-b537-325096b39f47
+0-7355-7372-7,Wuthering Heights,45,Emily Bronte,Fantasy,EB Publishers,English,2400,available,671d9170-1375-11ef-864f-325096b39f47
+0-1726-0686-1,Jane Eyre,54,charlotte Bronte,Horror,CB publishers,Chinese,4300,available,817706a0-1375-11ef-ae01-325096b39f47
+0-4680-6537-7,Frankenstein,33,Mary Shelley,Comedy,MS publishers,French,5300,available,9dc3d464-1375-11ef-98da-325096b39f47
+0-1151-7936-4,True colours,65,Adam Gilchrist,Adventure,AG publishers,Spanish,3200,available,b8a67fd4-1375-11ef-8e75-325096b39f47
+0-4853-5566-3,Freedom in Exile,33,Dalai Lama,Fantasy,DL publishers,Greek,2600,available,d2a3d6f1-364f-4191-90b7-8c0121b32db4
+0-1355-9746-3,The Red Sari,44,Javier Moro,Horror,JM Publishers,Germany,3400,available,c359dbde-e432-4b13-8ac2-bb650338b0cb
+0-3305-9619-5,Lowland,55,Jhumpa Lahiri,Comedy,JL Publishers,Hindhi,2100,availabile,5ebc47a9-c73d-48e5-8320-68a1d2509a3a
+0-5601-0736-6,Runs in Ruins,43,Sunil Gavasakar,Adventure,SG Publishers,Telugu,1400,availabile,9b899726-faea-4abc-8019-398cd8568317
+0-1294-8383-4,Dark Star,33,Chetan Bhagat,Fantasy,CB Publishers,English,2100,available,fadb9794-3b52-4676-bd24-9400701cf63c
+0-5138-2533-9,Funny Bones,12,Twinkle Kanna,Comedy,TK Publishers,English,4310,availabile,532bc1c4-9283-4e22-8871-f671eaa46f0d
+0-1775-1951-7,Flood of Fire,32,Amitav Ghosh,Horrible,AG Publishers,Hindi,3218,availabile,90e7a1db-091b-43dd-b65d-d8b905bde862
+0-3408-4757-3,War and Peace,27,Leo Tolstoy,Adventure,LT Publishers,Spanish,2314,availabile,0d2f1bfa-ded7-4e6c-ac33-4dcfb505970d

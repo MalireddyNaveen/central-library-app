@@ -1,0 +1,8 @@
+/* Enter your custom styles here */
+.background-image {
+    background-image: url("https://media.istockphoto.com/id/1498878143/photo/book-stack-and-open-book-on-the-desk-in-modern-public-library.jpg?b=1&s=612x612&w=0&k=20&c=VNyPBKIS8zq_58gLSa3fnpHq1DRVvjdZHzW4fGPcIb8=");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+}

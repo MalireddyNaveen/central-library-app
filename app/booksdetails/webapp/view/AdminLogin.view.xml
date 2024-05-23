@@ -1,0 +1,74 @@
+<mvc:View
+    controllerName="com.app.booksdetails.controller.AdminLogin"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+        class="Adminloginpage"
+    >
+        <VBox
+            class="sapUiSmallMargin"
+            alignItems="Center"
+        >
+            <form:SimpleForm
+               
+                id="idSimpleForm"
+                layout="ResponsiveGridLayout"
+            >
+                <form:content>
+                    <Title
+                        class="login"
+                        text="Admin Login Details"
+                        textAlign="Center"
+                    />
+                    <Label
+                        class="username"
+                        text="Username"
+                        textAlign="Initial"
+                    />
+                    <Input
+                        class="input"
+                        id="user"
+                        placeholder="Enter Username"
+                        width="80%"
+                        textAlign="Initial"
+                    />
+ 
+                    <Label
+                        class="password"
+                        text="Password"
+                        textAlign="Initial"
+                    />
+                    <Input
+                        id="pwd"
+                        type="Password"
+                        placeholder="Enter Password"
+                        width="80%"
+                        textAlign="Initial"
+                    />
+                    <core:Title />
+                    <VBox
+                        alignItems="Center"
+                        class="sapUiSmallMarginTop"
+                    >
+                        <Button
+                            icon="sap-icon://visits"
+                            id="btn"
+                            text="Login"
+                            type="Accept"
+                            width="100%"
+                            press="AdminBtnClick"
+                        />
+                    </VBox>
+                </form:content>
+            </form:SimpleForm>
+        </VBox>
+ 
+    </Page>
+</mvc:View>
