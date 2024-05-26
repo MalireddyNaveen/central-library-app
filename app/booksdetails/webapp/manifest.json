@@ -143,13 +143,6 @@
           ]
         },
         {
-          "name": "RouteAdminLogin",
-          "pattern": "AdminLogin",
-          "target": [
-            "TargetAdminLogin"
-          ]
-        },
-        {
           "name": "RouteAdmin",
           "pattern": "Admin",
           "target": [
@@ -179,13 +172,7 @@
           "viewId": "Login",
           "viewName": "Login"
         },
-        "TargetAdminLogin": {
-          "viewType": "XML",
-          "transition": "slide",
-          "clearControlAggregation": false,
-          "viewId": "AdminLogin",
-          "viewName": "AdminLogin"
-        },
+        
         "TargetAdmin": {
           "viewType": "XML",
           "transition": "slide",

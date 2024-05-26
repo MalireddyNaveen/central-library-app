@@ -25,7 +25,7 @@ entity Users : cuid {
   phoneNumber : Integer;
   Address     : String;
   books       : Association to many Books
-                  on books.users = $self
-
+                  on books.users = $self;
+  userType    : String;
 
 }

@@ -1,32 +1,49 @@
-<mvc:View
-    controllerName="com.app.booksdetails.controller.AdminLogin"
-    xmlns:mvc="sap.ui.core.mvc"
-    displayBlock="true"
-    xmlns="sap.m"
-    xmlns:l="sap.ui.layout"
-    xmlns:form="sap.ui.layout.form"
+<core:FragmentDefinition
     xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
 >
-    <Page
-        id="page"
-        title="{i18n>title}"
-        class="Adminloginpage"
+    <Dialog
+        id="idloginDialog"
+        resizable="true"
+        draggable="true"
+        contentWidth="30%"
+        title="Login Details"
     >
+        <customHeader>
+            <Bar>
+            <contentLeft>
+            <Text text="Login Details"></Text>
+            </contentLeft>
+                <contentRight>
+                    <Button
+                        id="cancelbtn"
+                        icon="sap-icon://sys-cancel"
+                        press="onCloseDialog"
+                        type="Reject"
+                    />
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <VBox
+            class="cancelbtn"
+            alignItems="End"
+        />
         <VBox
             class="sapUiSmallMargin"
             alignItems="Center"
         >
             <form:SimpleForm
-               
                 id="idSimpleForm"
                 layout="ResponsiveGridLayout"
             >
                 <form:content>
                     <Title
                         class="login"
-                        text="Admin Login Details"
+                        text="Login Details"
                         textAlign="Center"
                     />
+ 
                     <Label
                         class="username"
                         text="Username"
@@ -63,12 +80,11 @@
                             text="Login"
                             type="Accept"
                             width="100%"
-                            press="AdminBtnClick"
+                            press="onBtnClick"
                         />
                     </VBox>
                 </form:content>
             </form:SimpleForm>
         </VBox>
- 
-    </Page>
-</mvc:View>
+    </Dialog>
+</core:FragmentDefinition>

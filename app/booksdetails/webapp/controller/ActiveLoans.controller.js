@@ -195,6 +195,5 @@ sap.ui.define([
                     MessageToast.show("Please Select a Book to Edit");
                 }
             },
-            
         });
     });

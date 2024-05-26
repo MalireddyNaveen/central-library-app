@@ -17,20 +17,7 @@
                 <Text text="Writers" />
                 <Text text="sign up" />
  
-                <MenuButton text="Login">
-                    <Menu>
-                        <items>
-                            <MenuItem
-                                text="User Login"
-                                press="userlogin"
-                            />
-                            <MenuItem
-                                text="Admin Login"
-                                press="AdminLogin"
-                            />
-                        </items>
-                    </Menu>
-                </MenuButton>
+               <Button text="Login" press="onClick"></Button>
             </headerContent>
             <Text class="homepagetext" text="I do believe something very magical can happen when you read a good book -J.K.Rowling"/>
         </Page>
