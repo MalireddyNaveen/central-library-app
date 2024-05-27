@@ -195,6 +195,10 @@ sap.ui.define([
                     MessageToast.show("Please Select a Book to Edit");
                 }
             },
+            onActiveLoansFilterPress:function(){
+                var oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("RouteActiveLoans")
+            }
             
         });
     });
