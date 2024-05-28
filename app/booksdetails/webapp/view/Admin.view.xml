@@ -17,9 +17,10 @@
                 <f:heading>
                     <Title
                         id="idBooksPageHeadingTitle"
-                        text="LIBRARY"
+                        text="ARTIHCUS LIBRARY welcomes {userName}"
                     />
                 </f:heading>
+                
 
                 <f:navigationActions>
                     <Button

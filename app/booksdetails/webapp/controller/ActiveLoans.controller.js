@@ -16,7 +16,8 @@ sap.ui.define([
         return Controller.extend("com.app.booksdetails.controller.ActiveLoans", {
            onInit:function(){
             // var oModel = new ODataModel("/v2/BooksSRV/");
-            //         this.getView().setModel(oModel);
+            //        this.getView().setModel(oModel);
+            
             },
             setHeaderContext: function () {
                 var oView = this.getView();

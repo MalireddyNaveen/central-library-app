@@ -60,7 +60,17 @@ sap.ui.define([
                 oMulti2.addValidator(validate);
                 oMulti3.addValidator(validate);
                 oMulti4.addValidator(validate);
+                const oRouter = this.getOwnerComponent().getRouter();
+                oRouter.attachRoutePatternMatched(this.onUserDetailsLoad, this); 
 
+            },
+            onUserDetailsLoad: function(oEvent ){
+                const {id} = oEvent.getParameter("arguments");
+                this.ID = id;
+                 const sRouterName = oEvent.getParameter("name");
+                const oObjectPage = this.getView().byId("idBooksListPage");
+    
+                oObjectPage.bindElement(`/Users(${id})`);
             },
             setHeaderContext: function () {
                 var oView = this.getView();
