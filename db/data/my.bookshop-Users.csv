@@ -1,7 +1,7 @@
-ID,userName,password,email,phoneNumber,Address,userType,activeLoans_ID
+ID,userName,password,email,phoneNumber,Address,userType
 48d98520-1375-11ef-b537-325096b39f47,Joy,Joy@123,joy@gmail.com,9876543212,Hyderabad,Admin
 671d9170-1375-11ef-864f-325096b39f47,John,John@123,john@gmail.com,1234567898,Secunderabad,Non Admin
-817706a0-1375-11ef-ae01-325096b39f47,Jessy,Jessy@123,jessy@gmail.com,5432156789,Rajahmundry,Non Admin,e65ff70c-1c66-4020-b0d3-640c07bfa200
+817706a0-1375-11ef-ae01-325096b39f47,Jessy,Jessy@123,jessy@gmail.com,5432156789,Rajahmundry,Non Admin
 9dc3d464-1375-11ef-98da-325096b39f47,Blessy,Blessy@123,blessy@gmail.com,9087654321,Kurnool,Non Admin
 b8a67fd4-1375-11ef-8e75-325096b39f47,Sunny,Sunny@123,sunny@gmail.com,9089786543,Kadapa,Non Admin
 d2a3d6f1-364f-4191-90b7-8c0121b32db4,Funny,Funny@123,funny@gmail.com,9753124680,Kakinada,Non Admin

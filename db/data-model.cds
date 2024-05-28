@@ -29,7 +29,8 @@ entity Users : cuid {
   // books       : Association to many Books
   //                 on books.users = $self;
   userType    : String;
-  activeLoans : Association to ActiveLoans
+  activeLoans : Association to many ActiveLoans
+                  on activeLoans.userId = $self
 
 }
 
