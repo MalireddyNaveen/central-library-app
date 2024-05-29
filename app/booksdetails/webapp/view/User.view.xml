@@ -139,7 +139,7 @@
             <ObjectPageSection
                 titleUppercase="false"
                 id="idUserBorrowedBooksSection"
-                title="Activeloan"
+                title="Borrowed Books"
             >
                 <subSections>
                     <ObjectPageSubSection
@@ -165,14 +165,14 @@
                                         <m:ToolbarSpacer
                                             id="idTableHeaderSpacerUserLoans"
                                         />
-                                        <m:Button
+                                        <!-- <m:Button
                                             id="idBtnNewBook"
                                             text="New Book"
                                             icon="sap-icon://add"
                                             tooltip="Borrow New Book"
                                             type="Success"
                                             press="onBorrowNewBookPress"
-                                        />
+                                        /> -->
                                         <m:Button
                                             id="idBtnReturn"
                                             press="onReturnBookPress"
@@ -240,7 +240,7 @@
  
                      <ObjectPageSubSection
                         id="idBorrowBooksSubSection"
-                        title="Borrow Books"
+                        title="All Books"
                         titleUppercase="false"
                     >
                         <blocks>

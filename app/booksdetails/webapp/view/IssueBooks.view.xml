@@ -15,9 +15,7 @@
         alternateRowColors="true"
         backgroundDesign="Transparent"
         mode="MultiSelect"
-        items="{ path:'/ActiveLoans',  parameters : {
-            $count : true
-        }}"
+       
     >
      
      <!-- Header Tool Bar-->
@@ -25,66 +23,57 @@
             <OverflowToolbar id="idOverflowToolbar">
                 <Title
                     id="idUserLoanTitle"
-                    text="{/ActiveLoans/$count} UserLoans"
+                    text="Issue Books"
                 />
                 <ToolbarSpacer id="idtoolbar" />
 
                 <Button
                     id="idbutton"
                     type="Accept"
-                    text="Close Loan"
+                    text="Accept"
                 />
-                <!-- <Button
-                    id="idEditbutton"
-                    type="Emphasized"
-                    icon="sap-icon://edit"
-                />
-                <Button
-                    id="idDeletebutton"
-                    type="Reject"
-                    icon="sap-icon://delete"
-                /> -->
+                
             </OverflowToolbar>
         </headerToolbar>
 
         <columns>
-            <Column id="idIsbnColumn">
+            <Column id="idBookIdColumn">
                 <Title
-                    id="idIsbntitle"
+                    id="idBookIdtitle"
+                    text="BookID"
+                />
+            </Column>
+            <Column id="idISBNColumn">
+                <Title
+                    id="idISBNtitle"
                     text="ISBN"
                 />
             </Column>
-            <Column id="idBookTitleColumn">
+            <Column id="idUserIdColumn">
                 <Title
-                    id="idBookTitletitle"
-                    text="BookTitle"
+                    id="idUserIdtitle"
+                    text="UserID"
                 />
             </Column>
-            <Column id="idUserColumn">
+            <Column id="idRequestedDateColumn">
                 <Title
-                    id="idUsertitle"
-                    text="UserName"
+                    id="idRequestDatetitle"
+                    text="Request Date"
                 />
             </Column>
-            <!-- <Column id="idBooksColumn">
-                <Title
-                    id="idBookstitle"
-                    text="BooksISBN"
-                />
-            </Column> -->
 
-            <Column id="iddueColumn">
+            <!-- <Column id="iddueColumn">
                 <Title
                     id="idduetitle"
                     text="Issue Date"
                 />
-            </Column>
-            <Column id="idbodColumn">
+            </Column> -->
+            <!-- <Column id="idbodColumn">
                 <Title
                     id="idbodtitle"
                     text="Due Date"
                 />
-            </Column>
+            </Column> -->
         </columns>
 
         <items>
@@ -92,25 +81,25 @@
                 <cells>
                     <Text
                         id="idBISBNvalue"
-                        text="{bookId/ISBN}"
+                        text=""
                     />
                     <Text
                         id="idBookTitlevalue"
-                        text="{bookId/title}"
+                        text=""
                     />
                     <Text
                         id="idBUservalue"
-                        text="{userId/userName}"
+                        text=""
                     />
                    
                     <Text
                         id="idIssuevalue"
-                        text="{issueDate}"
+                        text=""
                     />
-                    <Text
+                    <!-- <Text
                         id="idduevalue"
                         text="{dueDate}"
-                    />
+                    /> -->
                 </cells>
             </ColumnListItem>
         </items>

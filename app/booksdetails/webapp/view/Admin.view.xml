@@ -20,13 +20,11 @@
                         text="ARTIHCUS LIBRARY welcomes {userName}"
                     />
                 </f:heading>
-                
 
                 <f:navigationActions>
                     <Button
                         id="idBtnFullScreen"
                         width="80%"
-                        
                         icon="sap-icon://customer"
                         type="Transparent"
                     />
@@ -143,7 +141,20 @@
                             type="Emphasized"
                             press="onActiveLoansFilterPress"
                         />
+                       
                     </VBox>
+                     <VBox>
+                     <Label
+                            id="idIssueBooksButtonLabel"
+                            text=""
+                        />
+                            <Button
+                                id="idIssueBooksFilterButtonValue"
+                                text="Issue Books"
+                                type="Emphasized"
+                                press="onIssueBooksFilterPress"
+                            />
+                        </VBox>
                 </HBox>
             </f:DynamicPageHeader>
         </f:header>
@@ -161,7 +172,7 @@
                     <OverflowToolbar id="idBookTableHeader">
                         <Title
                             id="idTableHeaderTitle"
-                            text="{/Books/$count} Books"
+                            text="{/Books/$count} Titles"
                         />
                         <ToolbarSpacer id="idTableHeaderSpacer" />
                         <Button
@@ -171,7 +182,7 @@
                             type="Success"
                             press="onCreateBtnPress"
                         />
-                         <Button
+                        <Button
                             id="idBtnUpdate"
                             icon="sap-icon://edit"
                             tooltip="Update Book"
@@ -185,8 +196,6 @@
                             type="Reject"
                             press="onDeleteBtnPress"
                         />
-
-                        
                     </OverflowToolbar>
                 </headerToolbar>
                 <columns>
@@ -238,12 +247,12 @@
                             text="Language"
                         />
                     </Column>
-                    <Column id="idpriceCol">
+                    <!-- <Column id="idpriceCol">
                         <Title
                             id="idpriceColTitle"
                             text="Price"
                         />
-                    </Column>
+                    </Column> -->
                 </columns>
                 <items>
                     <ColumnListItem
@@ -283,10 +292,10 @@
                                 id="idlangColValue"
                                 text="{language}"
                             />
-                            <Text
+                            <!-- <Text
                                 id="idPriceColValue"
                                 text="{price}"
-                            />
+                            /> -->
                         </cells>
                     </ColumnListItem>
                 </items>

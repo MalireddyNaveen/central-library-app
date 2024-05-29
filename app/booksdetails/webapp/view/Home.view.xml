@@ -5,19 +5,20 @@
 >
     <App>
         <Page
-            title="{i18n>title}"
+            title="Artihcus Library"
             class="page"
         >
             <headerContent>
-                <Title
+                <!-- <Title
                     class="LOA"
                     text="Library of ARTIHCUS"
-                />
-                <Text text="Books" />
+                /> -->
+                <!-- <Text text="Books" />
                 <Text text="Writers" />
-                <Text text="sign up" />
+                <Text text="sign up" /> -->
  
                <Button text="Login" press="onClick"></Button>
+               <Button text="SignUp" press="onClickSignUp"></Button>
             </headerContent>
             <Text class="homepagetext" text="I do believe something very magical can happen when you read a good book -J.K.Rowling"/>
         </Page>

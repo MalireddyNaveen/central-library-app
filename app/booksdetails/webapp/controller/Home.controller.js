@@ -3,12 +3,13 @@ sap.ui.define([
     "sap/ui/model/odata/v2/ODataModel",
     "sap/m/MessageToast",
     "sap/ui/model/Filter",
-    "sap/ui/model/FilterOperator"
+    "sap/ui/model/FilterOperator",
+    "sap/ui/model/json/JSONModel"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, ODataModel, MessageToast, Filter, FilterOperator) {
+    function (Controller, ODataModel, MessageToast, Filter, FilterOperator, JSONModel) {
         "use strict";
 
         return Controller.extend("com.app.booksdetails.controller.Home", {
@@ -16,12 +17,16 @@ sap.ui.define([
                 onInit: function () {
                     var oModel = new ODataModel("/v2/BooksSRV/");
                     this.getView().setModel(oModel);
-                    // const oLocalModel = new JSONModel({
-                    //     userame: "",
-                    //     password: "",
+                    const oLocalModel = new JSONModel({
+                        userName: "",
+                        password: "",
+                        email:"",
+                        phoneNumber:0,
+                        Address:"",
+                        userType:"Non Admin"
     
-                    // });
-                    // this.getView().setModel(oLocalModel, "localModel");
+                    });
+                    this.getView().setModel(oLocalModel, "localModel");
                 },
             
 
@@ -91,7 +96,30 @@ sap.ui.define([
                 // }
 
 
-            }
+            },
+            signupBtnClick: async function () {
+                
+                const oPayload = this.getView().getModel("localModel").getProperty("/"),
+                    oModel = this.getView().getModel("ModelV2");
+                try {
+                    await this.createData(oModel, oPayload, "/Users");
+                    // this.getView().byId("idBooksTable").getBinding("items").refresh();
+                    this.oSignupDialog.close();
+                } catch (error) {
+                    this.oSignupDialog.close();
+                    sap.m.MessageBox.error("Some technical Issue");
+                }},
+            onClickSignUp: async function () {
+                if (!this.oSignupDialog) {
+                    this.oSignupDialog = await this.loadFragment("SignUpDialogue")
+                }
+                this.oSignupDialog.open();
+            },
+            onsignupcancelbtn: function () {
+                if (this.oSignupDialog.isOpen()) {
+                    this.oSignupDialog.close()
+                }
+            },
 
 
         });
