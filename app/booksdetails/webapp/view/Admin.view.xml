@@ -44,7 +44,7 @@
                 <HBox
                     id="idFilterHLayout"
                     alignContent="SpaceAround"
-                    width="100vw"
+                   
                 >
                     <VBox
                         id="idTitleFilter"

@@ -24,5 +24,34 @@ sap.ui.define([
                 oView.byId("idUserLoans").setBindingContext(
                     oView.byId("_IDGenTable1").getBinding("items").getHeaderContext());
             },
+            onCloseLoan:async function () {
+                var aSelectedItems = this.byId("idUserLoans").getSelectedItems();
+                if (aSelectedItems.length > 0) {
+                    var aISBNs = [];
+                    aSelectedItems.forEach(function (oSelectedItem) {
+                        var sISBN = oSelectedItem.getBindingContext().getObject().isbn;
+                        aISBNs.push(sISBN);
+                        oSelectedItem.getBindingContext().delete("$auto");
+                    });
+
+                    Promise.all(aISBNs.map(function (sISBN) {
+                        return new Promise(function (resolve, reject) {
+                            resolve(sISBN + " Successfully Deleted");
+                        });
+                    })).then(function (aMessages) {
+                        aMessages.forEach(function (sMessage) {
+                            MessageToast.show(sMessage);
+                        });
+                    }).catch(function (oError) {
+                        MessageToast.show("Deletion Error: " + oError);
+                    });
+
+                    this.getView().byId("idBookTable").removeSelections(true);
+                    this.getView().byId("idBookTable").getBinding("items").refresh();
+                } else {
+                    MessageToast.show("Please Select Rows to Delete");
+                };
+                location.reload();
+            }
         });
     });

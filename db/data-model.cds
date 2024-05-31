@@ -13,7 +13,7 @@ entity Books : cuid {
   publisher     : String;
   language      : String;
   price         : Integer;
-  availability  : String;
+  availability  : Integer;
   // users        : Association to Users;
   activeLoan_ID : Composition of many ActiveLoans
                     on activeLoan_ID.bookId = $self
@@ -39,4 +39,10 @@ entity ActiveLoans : cuid {
   userId    : Association to Users;
   issueDate : Date;
   dueDate   : Date
+}
+
+entity IssueBooks : cuid {
+  book:Association to Books;
+  user:Association to Users;
+  
 }

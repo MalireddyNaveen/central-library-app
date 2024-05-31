@@ -1,14 +1,14 @@
 ID,ISBN,title,quantity,author,genre,publisher,language,price,availability
-d98abe09-7072-449f-a9e6-ce216eb2e49d,0-5582-2179-3,harrypotter,25,Jkrowling,Adventure,Jk Publishers,English,2000,available
-3dc52bc3-e622-4fe9-a847-e639fb30c429,0-7355-7372-7,Wuthering Heights,45,Emily Bronte,Fantasy,EB Publishers,English,2400,available
-e1bfe4a7-570e-4c59-b375-0c731fb52361,0-1726-0686-1,Jane Eyre,54,charlotte Bronte,Horror,CB publishers,Chinese,4300,available
-c12bfc07-c77f-4fc0-bab4-5d0d24f6600a,0-4680-6537-7,Frankenstein,33,Mary Shelley,Comedy,MS publishers,French,5300,available
-cd5b7339-77cf-4cdc-9634-e9f28d605209,0-1151-7936-4,True colours,65,Adam Gilchrist,Adventure,AG publishers,Spanish,3200,available
-9a27fd91-6eb5-4f6b-8aaa-ea3f1de1db3b,0-4853-5566-3,Freedom in Exile,33,Dalai Lama,Fantasy,DL publishers,Greek,2600,available
-3b7241c4-362d-4eec-94b9-9eb9cfdaf11d,0-1355-9746-3,The Red Sari,44,Javier Moro,Horror,JM Publishers,Germany,3400,available
-07f49832-bed2-4a81-8450-cd23c4af37a9,0-3305-9619-5,Lowland,55,Jhumpa Lahiri,Comedy,JL Publishers,Hindhi,2100,availabile
-f9a5d601-3dde-4f40-b031-e3b4c78cd104,0-5601-0736-6,Runs in Ruins,43,Sunil Gavasakar,Adventure,SG Publishers,Telugu,1400,availabile
-b57c139d-98fd-4f18-8962-46457ad6a915,0-1294-8383-4,Dark Star,33,Chetan Bhagat,Fantasy,CB Publishers,English,2100,available
-849611a1-a4d8-4b4f-a192-90e49cb8d487,0-5138-2533-9,Funny Bones,12,Twinkle Kanna,Comedy,TK Publishers,English,4310,availabile
-b716fcea-60bd-4035-9462-cf92cb58f38b,0-1775-1951-7,Flood of Fire,32,Amitav Ghosh,Horrible,AG Publishers,Hindi,3218,availabile
-e837ea7c-c6a6-43c5-bddc-598b2fc3efc6,0-3408-4757-3,War and Peace,27,Leo Tolstoy,Adventure,LT Publishers,Spanish,2314,availabile
+d98abe09-7072-449f-a9e6-ce216eb2e49d,0-5582-2179-3,harrypotter,25,Jkrowling,Adventure,Jk Publishers,English,2000,25
+3dc52bc3-e622-4fe9-a847-e639fb30c429,0-7355-7372-7,Wuthering Heights,45,Emily Bronte,Fantasy,EB Publishers,English,2400,45
+e1bfe4a7-570e-4c59-b375-0c731fb52361,0-1726-0686-1,Jane Eyre,54,charlotte Bronte,Horror,CB publishers,Chinese,4300,54
+c12bfc07-c77f-4fc0-bab4-5d0d24f6600a,0-4680-6537-7,Frankenstein,33,Mary Shelley,Comedy,MS publishers,French,5300,33
+cd5b7339-77cf-4cdc-9634-e9f28d605209,0-1151-7936-4,True colours,65,Adam Gilchrist,Adventure,AG publishers,Spanish,3200,65
+9a27fd91-6eb5-4f6b-8aaa-ea3f1de1db3b,0-4853-5566-3,Freedom in Exile,33,Dalai Lama,Fantasy,DL publishers,Greek,2600,33
+3b7241c4-362d-4eec-94b9-9eb9cfdaf11d,0-1355-9746-3,The Red Sari,44,Javier Moro,Horror,JM Publishers,Germany,3400,44
+07f49832-bed2-4a81-8450-cd23c4af37a9,0-3305-9619-5,Lowland,55,Jhumpa Lahiri,Comedy,JL Publishers,Hindhi,2100,55
+f9a5d601-3dde-4f40-b031-e3b4c78cd104,0-5601-0736-6,Runs in Ruins,43,Sunil Gavasakar,Adventure,SG Publishers,Telugu,1400,43
+b57c139d-98fd-4f18-8962-46457ad6a915,0-1294-8383-4,Dark Star,33,Chetan Bhagat,Fantasy,CB Publishers,English,2100,33
+849611a1-a4d8-4b4f-a192-90e49cb8d487,0-5138-2533-9,Funny Bones,12,Twinkle Kanna,Comedy,TK Publishers,English,4310,12
+b716fcea-60bd-4035-9462-cf92cb58f38b,0-1775-1951-7,Flood of Fire,32,Amitav Ghosh,Horrible,AG Publishers,Hindi,3218,32
+e837ea7c-c6a6-43c5-bddc-598b2fc3efc6,0-3408-4757-3,War and Peace,27,Leo Tolstoy,Adventure,LT Publishers,Spanish,2314,27

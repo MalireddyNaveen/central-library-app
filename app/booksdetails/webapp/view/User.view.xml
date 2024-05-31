@@ -60,7 +60,7 @@
                     />
                 </expandedContent>
  
-                <actions />
+                <actions/>
             </ObjectPageDynamicHeaderTitle>
         </headerTitle>
  
@@ -119,7 +119,7 @@
                 >
                     <m:Label
                         id="idLabelForUserText"
-                        text="Hello! {userName} from Artihcus Library"
+                        text="Hello! {userName}"
                     />
                 </layout:VerticalLayout>
  
@@ -151,7 +151,7 @@
                                 id="idUserActiveLoanTable"
                                 mode="MultiSelect"
                                 alternateRowColors="true"
-                                items="{/ActiveLoans}"
+                                items="{activeLoans}"
                                
                             >
                                 <m:headerToolbar>
@@ -160,7 +160,7 @@
                                     >
                                         <m:Title
                                             id="idTableHeaderTitleUserLoans"
-                                            text="Active Borrows"
+                                            text=""
                                         />
                                         <m:ToolbarSpacer
                                             id="idTableHeaderSpacerUserLoans"
@@ -173,14 +173,14 @@
                                             type="Success"
                                             press="onBorrowNewBookPress"
                                         /> -->
-                                        <m:Button
+                                        <!-- <m:Button
                                             id="idBtnReturn"
                                             press="onReturnBookPress"
                                             icon="sap-icon://delete"
                                             tooltip="Return Book"
                                             text="Return Book"
                                             type="Negative"
-                                        />
+                                        /> -->
                                     </m:OverflowToolbar>
                                 </m:headerToolbar>
                                 <m:columns>

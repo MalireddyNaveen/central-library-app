@@ -61,14 +61,14 @@
                     id="idISBNInput"
                     value="{localModel>/ISBN}"
                 />
-                <!-- <Label
+                <Label
                     id="idQuantityLabel"
-                    text=""
+                    text="Quantity"
                 />
                 <Input
                     id="idQuantityInput"
                     value="{localModel>/quantity}"
-                /> -->
+                />
                 <Label
                     id="idAuthorLabel"
                     text="Author"
@@ -101,14 +101,14 @@
                     id="idLanguageInput"
                     value="{localModel>/language}"
                 />
-                <Label
+                <!-- <Label
                     id="idPriceLabel"
                     text="Price"
                 />
                 <Input
                     id="idPriceInput"
                     value="{localModel>/price}"
-                />
+                /> -->
             </form:SimpleForm>
         </content>
     </Dialog>

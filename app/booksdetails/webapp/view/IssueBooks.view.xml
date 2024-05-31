@@ -1,6 +1,6 @@
 <mvc:View
     xmlns:tnt="sap.tnt"
-    controllerName="com.app.booksdetails.controller.ActiveLoans"
+    controllerName="com.app.booksdetails.controller.IssueBooks"
     
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"

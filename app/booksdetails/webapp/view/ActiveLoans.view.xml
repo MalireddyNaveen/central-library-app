@@ -25,7 +25,7 @@
             <OverflowToolbar id="idOverflowToolbar">
                 <Title
                     id="idUserLoanTitle"
-                    text="{/ActiveLoans/$count} UserLoans"
+                    text="{/ActiveLoans/$count} Active Loans"
                 />
                 <ToolbarSpacer id="idtoolbar" />
 
@@ -33,6 +33,7 @@
                     id="idbutton"
                     type="Accept"
                     text="Close Loan"
+                    press="onCloseLoan"
                 />
                 <!-- <Button
                     id="idEditbutton"
