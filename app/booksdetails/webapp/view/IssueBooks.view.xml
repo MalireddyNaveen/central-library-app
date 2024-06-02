@@ -10,11 +10,12 @@
     <StandardListItem  id="ss" title="{users}" counter="{users}"></StandardListItem>
     </List> -->
     <Table
-        id="idUserLoans"
+        id="idIssueBooks"
          
         alternateRowColors="true"
         backgroundDesign="Transparent"
         mode="MultiSelect"
+        items="{/IssueBooks}"
        
     >
      
@@ -31,6 +32,7 @@
                     id="idbutton"
                     type="Accept"
                     text="Accept"
+                    press="onAcceptReservedBook"
                 />
                 
             </OverflowToolbar>
@@ -49,10 +51,22 @@
                     text="ISBN"
                 />
             </Column>
+            <Column id="idTitleColumn">
+                <Title
+                    id="idTitletitle"
+                    text="Title"
+                />
+            </Column>
             <Column id="idUserIdColumn">
                 <Title
                     id="idUserIdtitle"
                     text="UserID"
+                />
+            </Column>
+             <Column id="idUserNameColumn">
+                <Title
+                    id="idUserNametitle"
+                    text="UserName"
                 />
             </Column>
             <Column id="idRequestedDateColumn">
@@ -81,20 +95,28 @@
                 <cells>
                     <Text
                         id="idBISBNvalue"
-                        text=""
+                        text="{book/ID}"
                     />
                     <Text
-                        id="idBookTitlevalue"
-                        text=""
+                        id="idBookTilevalue"
+                        text="{book/ISBN}"
                     />
                     <Text
-                        id="idBUservalue"
-                        text=""
+                        id="idBookISBNvalue"
+                        text="{book/title}"
+                    />
+                    <Text
+                        id="idBUserIDvalue"
+                        text="{user/ID}"
+                    />
+                     <Text
+                        id="idBUserNamevalue"
+                        text="{user/userName}"
                     />
                    
                     <Text
                         id="idIssuevalue"
-                        text=""
+                        text="{reservedDate}"
                     />
                     <!-- <Text
                         id="idduevalue"

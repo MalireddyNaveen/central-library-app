@@ -2,11 +2,13 @@ sap.ui.define([
     "./BaseController",
     "sap/ui/model/odata/v2/ODataModel",
     "sap/ui/model/json/JSONModel",
+    
+    "sap/m/MessageToast"
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, ODataModel, JSONModel) {
+    function (Controller, ODataModel, JSONModel,MessageToast) {
         "use strict";
 
         return Controller.extend("com.app.booksdetails.controller.User", {
@@ -22,60 +24,40 @@ sap.ui.define([
 
                 oObjectPage.bindElement(`/Users(${id})`);
             },
-            onBorrowNewBookPress: async function () {
-                var aSelectedItems = this.byId("idBooksTable").getSelectedItems();
-                if (aSelectedItems.length > 0) {
-                    var aISBNs = [];
-
-                    aSelectedItems.forEach(function (oSelectedItem) {
-                        var oTitle = oSelectedItem.getBindingContext().getObject().title;
-                        
-
-                        const newBookReserve = new JSONModel(
-                            {
-                                book: {
-                                    title: oTitle
-                                }
-                            }
-                        )
-                        this.setModel(newBookReserve,"newBookModel");
-                        var oNewBook = this.getModel(
-                            "newBookModel"
-                            ).getData();
-                        console.log(oBookID)
-
-
-
-                        try {
-                            this.createData(ODataModel, oNewBook, "/IssueBooks");
-
-                        } catch (error) {
-
-                            MessageBox.error("Some technical Issue");
-                        }
-                        // aISBNs.push(sISBN);
-                        // oSelectedItem.getBindingContext().delete("$auto");
-                    });
-
-                    Promise.all(aISBNs.map(function (sISBN) {
-                        return new Promise(function (resolve, reject) {
-                            resolve(sISBN + " Successfully Deleted");
-                        });
-                    })).then(function (aMessages) {
-                        aMessages.forEach(function (sMessage) {
-                            MessageToast.show(sMessage);
-                        });
-                    }).catch(function (oError) {
-                        MessageToast.show("Deletion Error: " + oError);
-                    });
-
-                    // this.getView().byId("idBookTable").removeSelections(true);
-                    // this.getView().byId("idBookTable").getBinding("items").refresh();
-                } else {
-                    MessageToast.show("Please Select Rows to Delete");
-                };
-
-            }
+            onBorrowNewBookPress: async function (oEvent) {
+                console.log(this.byId("idBooksTable").getSelectedItem().getBindingContext().getObject())
+                var oSelectedItem = oEvent.getSource().getParent();
+                console.log(oSelectedItem)
+                console.log(oEvent.getSource().getBindingContext().getObject())
+                console.log(oEvent.getParameters())
+                var oSelectedUser = oSelectedItem.getBindingContext().getObject();
+                if(this.byId("idBooksTable").getSelectedItems().length>1){
+                    MessageToast.show("Please Select only one Book");
+                    return
+                }
+                var oSelectedBook=this.byId("idBooksTable").getSelectedItem().getBindingContext().getObject()
+                console.log(oSelectedBook)
+            
+                const userModel = new sap.ui.model.json.JSONModel({
+                    user_ID : oSelectedUser.ID,
+                    book_ID: oSelectedBook.ID,
+                    reservedDate: new Date(),
+                });
+                this.getView().setModel(userModel, "userModel");
+            
+                const oPayload = this.getView().getModel("userModel").getProperty("/"),
+                    oModel = this.getView().getModel("ModelV2");
+            
+                try {
+                    await this.createData(oModel, oPayload, "/IssueBooks");
+                    sap.m.MessageBox.success("Book Reserved");
+                    //this.getView().byId("idIssueBooks").getBinding("items").refresh();
+                    //this.oCreateBooksDialog.close();
+                } catch (error) {
+                    //this.oCreateBooksDialog.close();
+                    sap.m.MessageBox.error("Some technical Issue");
+                }
+            },
 
         });
     });

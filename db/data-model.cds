@@ -13,8 +13,8 @@ entity Books : cuid {
   publisher     : String;
   language      : String;
   price         : Integer;
+  user:Association to Users;
   availability  : Integer;
-  // users        : Association to Users;
   activeLoan_ID : Composition of many ActiveLoans
                     on activeLoan_ID.bookId = $self
 
@@ -29,8 +29,12 @@ entity Users : cuid {
   // books       : Association to many Books
   //                 on books.users = $self;
   userType    : String;
+  book:Association to many Books on book.user=$self;
   activeLoans : Association to many ActiveLoans
-                  on activeLoans.userId = $self
+                  on activeLoans.userId = $self;
+  issueBooks  : Association to many IssueBooks
+                  on issueBooks.user = $self;
+  
 
 }
 
@@ -42,7 +46,7 @@ entity ActiveLoans : cuid {
 }
 
 entity IssueBooks : cuid {
-  book:Association to Books;
-  user:Association to Users;
-  
+  book         : Association to Books;
+  user         : Association to Users;
+  reservedDate : Date
 }
