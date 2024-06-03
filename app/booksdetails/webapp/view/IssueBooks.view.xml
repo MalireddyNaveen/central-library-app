@@ -76,12 +76,12 @@
                 />
             </Column>
 
-            <!-- <Column id="iddueColumn">
+            <Column id="idAColumn">
                 <Title
-                    id="idduetitle"
-                    text="Issue Date"
+                    id="idAtitle"
+                    text="Avalilabity"
                 />
-            </Column> -->
+            </Column>
             <!-- <Column id="idbodColumn">
                 <Title
                     id="idbodtitle"
@@ -117,6 +117,10 @@
                     <Text
                         id="idIssuevalue"
                         text="{reservedDate}"
+                    />
+                    <Text
+                        id="idAvaliablityvalue"
+                        text="{book/availability}"
                     />
                     <!-- <Text
                         id="idduevalue"

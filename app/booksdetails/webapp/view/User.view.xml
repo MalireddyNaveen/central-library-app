@@ -32,6 +32,7 @@
                         text="Artihcus Library"
                         wrapping="true"
                     />
+                    
                 </expandedHeading>
  
                 <snappedHeading>
@@ -60,7 +61,10 @@
                     />
                 </expandedContent>
  
-                <actions/>
+                <actions>
+					<m:Button tooltip="Notification" icon="sap-icon://bell" type="Transparent" press="onNotificationPress"/>
+					
+				</actions>
             </ObjectPageDynamicHeaderTitle>
         </headerTitle>
  
@@ -290,7 +294,7 @@
                                     <m:Column id="idStockCol">
                                         <m:Title
                                             id="idStockColHead"
-                                            text="Quantity"
+                                            text="AvailableQuantity"
                                         />
                                     </m:Column>
                                     <m:Column id="idISBNCol">
@@ -316,7 +320,7 @@
                                             />
                                             <m:Text
                                                 id="idStockColValue"
-                                                text="{quantity}"
+                                                text="{availability}"
                                             />
                                             <m:Text
                                                 id="idISBNColValue"

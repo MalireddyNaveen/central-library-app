@@ -25,6 +25,7 @@ sap.ui.define([
                 oObjectPage.bindElement(`/Users(${id})`);
             },
             onBorrowNewBookPress: async function (oEvent) {
+                
                 console.log(this.byId("idBooksTable").getSelectedItem().getBindingContext().getObject())
                 var oSelectedItem = oEvent.getSource().getParent();
                 console.log(oSelectedItem)
@@ -36,12 +37,18 @@ sap.ui.define([
                     return
                 }
                 var oSelectedBook=this.byId("idBooksTable").getSelectedItem().getBindingContext().getObject()
-                console.log(oSelectedBook)
+                console.log(oSelectedBook.availability)
+                var oQuantity=oSelectedBook.availability-1;
+                console.log(oQuantity)
+                
             
                 const userModel = new sap.ui.model.json.JSONModel({
                     user_ID : oSelectedUser.ID,
                     book_ID: oSelectedBook.ID,
                     reservedDate: new Date(),
+                    book:{
+                        availability:oQuantity
+                    }
                 });
                 this.getView().setModel(userModel, "userModel");
             
@@ -53,9 +60,32 @@ sap.ui.define([
                     sap.m.MessageBox.success("Book Reserved");
                     //this.getView().byId("idIssueBooks").getBinding("items").refresh();
                     //this.oCreateBooksDialog.close();
+                    // oModel.update("/Books(" + oSelectedBook.ID + ")", oPayload.book, {
+                    //     success: function() {
+                    //         this.getView().byId("idBooksTable").getBinding("items").refresh();
+                    //         //this.oEditBooksDialog.close();
+                    //     }.bind(this),
+                    //     error: function(oError) {
+                    //         //this.oEditBooksDialog.close();
+                    //         sap.m.MessageBox.error("Failed to update book: " + oError.message);
+                    //     }.bind(this)
+                    // });
                 } catch (error) {
                     //this.oCreateBooksDialog.close();
                     sap.m.MessageBox.error("Some technical Issue");
+                }
+            },
+            onNotificationPress:async function(){
+                if (!this.oNotifyDialog) {
+                    this.oNotifyDialog = await this.loadFragment("Notify")
+                }
+                this.oNotifyDialog.open();
+                
+            },
+            
+            onCloseDialog: function () {
+                if (this.oNotifyDialog.isOpen()) {
+                    this.oNotifyDialog.close()
                 }
             },
 

@@ -101,6 +101,16 @@ sap.ui.define([
                 
                 const oPayload = this.getView().getModel("localModel").getProperty("/"),
                     oModel = this.getView().getModel("ModelV2");
+                    // oPayload.read{
+
+                    // }
+                    if(oPayload.userName && oPayload.password){
+
+                    }
+                    else{
+                        sap.m.MessageBox.error("Please enter valid details");
+                        return
+                    }
                 try {
                     await this.createData(oModel, oPayload, "/Users");
                     // this.getView().byId("idBooksTable").getBinding("items").refresh();

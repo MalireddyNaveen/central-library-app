@@ -86,6 +86,18 @@
                     text="Due Date"
                 />
             </Column>
+            <Column id="idAvailabilityColumn">
+                <Title
+                    id="idAvailabilitytitle"
+                    text="Availability"
+                />
+            </Column>
+            <Column id="idBookIdColumn">
+                <Title
+                    id="idBookIDTitle"
+                    text="ID"
+                />
+            </Column>
         </columns>
 
         <items>
@@ -103,7 +115,6 @@
                         id="idBUservalue"
                         text="{userId/userName}"
                     />
-                   
                     <Text
                         id="idIssuevalue"
                         text="{issueDate}"
@@ -111,6 +122,14 @@
                     <Text
                         id="idduevalue"
                         text="{dueDate}"
+                    />
+                    <Text
+                        id="idAqvalue"
+                        text="{bookId/availability}"
+                    />
+                     <Text
+                        id="idBookIdvalue"
+                        text="{bookId/ID}"
                     />
                 </cells>
             </ColumnListItem>

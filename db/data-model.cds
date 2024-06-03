@@ -21,11 +21,11 @@ entity Books : cuid {
 }
 
 entity Users : cuid {
-  userName    : String;
-  password    : String;
-  email       : String;
-  phoneNumber : Integer;
-  Address     : String;
+  userName    : String not null;
+  password    : String not null;
+  email       : String not null;
+  phoneNumber : Integer64 not null;
+  Address     : String not null;
   // books       : Association to many Books
   //                 on books.users = $self;
   userType    : String;
@@ -42,7 +42,8 @@ entity ActiveLoans : cuid {
   bookId    : Association to Books;
   userId    : Association to Users;
   issueDate : Date;
-  dueDate   : Date
+  dueDate   : Date;
+  notify:String
 }
 
 entity IssueBooks : cuid {

@@ -46,7 +46,7 @@
                 columnsM="1"
                 singleContainerFullSize="false"
             >
-             <!-- <Label
+                <!-- <Label
                     id="idEditBookID"
                     text="ID"
                 />
@@ -95,7 +95,6 @@
                 />
                 <Input
                     id="idEditBookAuthorVal"
-                    
                     editable="true"
                     valueLiveUpdate="true"
                     value="{newBookModel>/author}"
@@ -130,6 +129,16 @@
                     editable="true"
                     valueLiveUpdate="true"
                     value="{newBookModel>/language}"
+                />
+                <Label
+                    id="idavailability"
+                    text="Availability"
+                />
+                <Input
+                    id="idAvailabilityVal"
+                    editable="false"
+                    valueLiveUpdate="true"
+                    value="{newBookModel>/availability}"
                 />
             </form:SimpleForm>
         </content>

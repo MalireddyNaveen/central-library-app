@@ -70,6 +70,16 @@
                     value="{localModel>/quantity}"
                 />
                 <Label
+                    id="idAQuantityLabel"
+                    text="AvailableQuantity"
+                    
+                />
+                <Input
+                    id="idAQuantityInput"
+                    value="{localModel>/availability}"
+                    
+                />
+                <Label
                     id="idAuthorLabel"
                     text="Author"
                 />

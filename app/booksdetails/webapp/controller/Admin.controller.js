@@ -159,7 +159,7 @@ sap.ui.define([
                     MessageBox.error("Some technical Issue");
                 }
                 
-                location.reload();
+                this.getView().byId("idBookTable").getBinding("items").refresh();
 
             },
             onDeleteBtnPress: async function () {
@@ -167,7 +167,7 @@ sap.ui.define([
                 if (aSelectedItems.length > 0) {
                     var aISBNs = [];
                     aSelectedItems.forEach(function (oSelectedItem) {
-                        var sISBN = oSelectedItem.getBindingContext().getObject().isbn;
+                        var sISBN = oSelectedItem.getBindingContext().getObject().title;
                         aISBNs.push(sISBN);
                         oSelectedItem.getBindingContext().delete("$auto");
                     });
@@ -189,7 +189,8 @@ sap.ui.define([
                 } else {
                     MessageToast.show("Please Select Rows to Delete");
                 };
-                location.reload();
+                this.getView().byId("idBookTable").getBinding("items").refresh()
+                
             },
             // onUpdateBtnPress: function () {
             //     var oBookTable = this.byId("idBookTable");
@@ -219,6 +220,10 @@ sap.ui.define([
             },
             onUpdateBtnPress: async function () {
                 var oSelected = this.byId("idBookTable").getSelectedItems();
+                if(oSelected.length===0){
+                    MessageToast.show("Please Select atleast one Book to Edit");
+                    return
+                }
                 if(oSelected.length>1){
                     MessageToast.show("Please Select only one Book to Edit");
                     return
@@ -234,6 +239,18 @@ sap.ui.define([
                     var oGenre = oSelect.getBindingContext().getProperty("genre");
                     var oPublisher = oSelect.getBindingContext().getProperty("publisher");
                     var oLanguage = oSelect.getBindingContext().getProperty("language");
+                    var oAq=oSelect.getBindingContext().getProperty("availability");
+                    if(oAq===oQuantity){
+                        oAq=oQuantity
+                    }
+                    else if(oAq<oQuantity){
+                        let count=oQuantity-oAq
+                        oAq=+count
+                    }
+                    else{
+                        let count=oAq-oQuantity
+                        oAq=-count
+                    }
             
                     var newBookModel = new sap.ui.model.json.JSONModel({
                         ID:oID,
@@ -243,7 +260,8 @@ sap.ui.define([
                         author: oAuthorName,
                         genre:oGenre,
                         publisher:oPublisher,
-                        language:oLanguage
+                        language:oLanguage,
+                        availability:oQuantity
                     });
             
                     this.getView().setModel(newBookModel, "newBookModel");
@@ -284,7 +302,8 @@ sap.ui.define([
                     defaultBindingMode: sap.ui.model.BindingMode.TwoWay,
                     // Configure message parser
                     messageParser: sap.ui.model.odata.ODataMessageParser
-                })  
+                })
+                this.getView().byId("idBookTable").getBinding("items").refresh();  
         },
         
 
