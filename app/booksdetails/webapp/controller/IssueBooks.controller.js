@@ -12,6 +12,7 @@ sap.ui.define([
 
         return Controller.extend("com.app.booksdetails.controller.IssueBooks", {
             onInit: function () {
+                
                 var oTable = this.byId("idIssueBooks");
  
          

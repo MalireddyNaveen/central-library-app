@@ -58,7 +58,7 @@ sap.ui.define([
                 try {
                     await this.createData(oModel, oPayload, "/IssueBooks");
                     sap.m.MessageBox.success("Book Reserved");
-                    //this.getView().byId("idIssueBooks").getBinding("items").refresh();
+                    this.getView().byId("idBooksTable").getBinding("items").refresh();
                     //this.oCreateBooksDialog.close();
                     // oModel.update("/Books(" + oSelectedBook.ID + ")", oPayload.book, {
                     //     success: function() {

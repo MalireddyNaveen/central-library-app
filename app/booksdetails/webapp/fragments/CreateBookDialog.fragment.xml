@@ -48,6 +48,7 @@
                 <Label
                     id="idTitleLabel"
                     text="Title"
+                    required="true"
                 />
                 <Input
                     id="idTitleInput"
@@ -56,6 +57,7 @@
                 <Label
                     id="idISBNLabel"
                     text="ISBN"
+                    required="true"
                 />
                 <Input
                     id="idISBNInput"
@@ -64,6 +66,7 @@
                 <Label
                     id="idQuantityLabel"
                     text="Quantity"
+                    required="true"
                 />
                 <Input
                     id="idQuantityInput"
@@ -72,6 +75,7 @@
                 <Label
                     id="idAQuantityLabel"
                     text="AvailableQuantity"
+                    required="true"
                     
                 />
                 <Input
@@ -82,6 +86,7 @@
                 <Label
                     id="idAuthorLabel"
                     text="Author"
+                    required="true"
                 />
                 <Input
                     id="idAuthorInput"
@@ -90,6 +95,7 @@
                 <Label
                     id="idGenreLabel"
                     text="Genre"
+                    required="true"
                 />
                 <Input
                     id="idGenreInput"
@@ -98,6 +104,7 @@
                 <Label
                     id="idPublisherLabel"
                     text="Publisher"
+                    required="true"
                 />
                 <Input
                     id="idPublisherInput"
@@ -106,10 +113,12 @@
                 <Label
                     id="idLanguageLabel"
                     text="Language"
+                    required="true"
                 />
                 <Input
                     id="idLanguageInput"
                     value="{localModel>/language}"
+                    required="true"
                 />
                 <!-- <Label
                     id="idPriceLabel"
