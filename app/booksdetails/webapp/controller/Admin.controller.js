@@ -150,8 +150,11 @@ sap.ui.define([
                 }
             },
             onCreateBook: async function () {
-                const oPayload = this.getView().getModel("localModel").getProperty("/"),
+                var oPayload = this.getView().getModel("localModel").getProperty("/"),
+                
                     oModel = this.getView().getModel("ModelV2");
+                    oPayload.availability=oPayload.quantity;
+                    this.getView().getModel("localModel").setData(oPayload);
                 if (!(oPayload.ISBN && oPayload.author && oPayload.availability && oPayload.genre && oPayload.language && oPayload.publisher && oPayload.quantity && oPayload.title)) {
                     MessageToast.show("Enter all details");
                     return

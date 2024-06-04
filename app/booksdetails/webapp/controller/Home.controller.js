@@ -13,22 +13,22 @@ sap.ui.define([
         "use strict";
 
         return Controller.extend("com.app.booksdetails.controller.Home", {
-            
-                onInit: function () {
-                    var oModel = new ODataModel("/v2/BooksSRV/");
-                    this.getView().setModel(oModel);
-                    const oLocalModel = new JSONModel({
-                        userName: "",
-                        password: "",
-                        email:"",
-                        phoneNumber:0,
-                        Address:"",
-                        userType:"Non Admin"
-    
-                    });
-                    this.getView().setModel(oLocalModel, "localModel");
-                },
-            
+
+            onInit: function () {
+                var oModel = new ODataModel("/v2/BooksSRV/");
+                this.getView().setModel(oModel);
+                const oLocalModel = new JSONModel({
+                    userName: "",
+                    password: "",
+                    email: "",
+                    phoneNumber: 0,
+                    Address: "",
+                    userType: "Non Admin"
+
+                });
+                this.getView().setModel(oLocalModel, "localModel");
+            },
+
 
             onClick: async function () {
                 if (!this.oLoginDialog) {
@@ -98,27 +98,52 @@ sap.ui.define([
 
             },
             signupBtnClick: async function () {
-                
+
                 const oPayload = this.getView().getModel("localModel").getProperty("/"),
                     oModel = this.getView().getModel("ModelV2");
-                    // oPayload.read{
+                // oPayload.read{
 
-                    // }
-                    if(oPayload.userName && oPayload.password){
+                // }
+                if (oPayload.userName && oPayload.password) {
 
-                    }
-                    else{
-                        sap.m.MessageBox.error("Please enter valid details");
+                }
+                else {
+                    sap.m.MessageBox.error("Please enter valid details");
+                    return
+                }
+                try {
+                    const oTitleExist = await this.checkUserName(oModel, oPayload.userName, oPayload.password)
+                    if (oTitleExist) {
+                        MessageToast.show("User already exsist")
                         return
                     }
-                try {
                     await this.createData(oModel, oPayload, "/Users");
                     // this.getView().byId("idBooksTable").getBinding("items").refresh();
                     this.oSignupDialog.close();
                 } catch (error) {
                     this.oSignupDialog.close();
                     sap.m.MessageBox.error("Some technical Issue");
-                }},
+                }
+            },
+            checkUserName: async function (oModel, sUserName, sPassword) {
+                return new Promise((resolve, reject) => {
+                    oModel.read("/Users", {
+                        filters: [
+                            new Filter("userName", FilterOperator.EQ, sUserName),
+                            new Filter("password", FilterOperator.EQ, sPassword)
+
+                        ],
+                        success: function (oData) {
+                            resolve(oData.results.length > 0);
+                        },
+                        error: function () {
+                            reject(
+                                "An error occurred while checking username existence."
+                            );
+                        }
+                    })
+                })
+            },
             onClickSignUp: async function () {
                 if (!this.oSignupDialog) {
                     this.oSignupDialog = await this.loadFragment("SignUpDialogue")

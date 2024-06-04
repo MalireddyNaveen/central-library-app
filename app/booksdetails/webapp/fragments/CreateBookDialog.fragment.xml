@@ -75,13 +75,12 @@
                 <Label
                     id="idAQuantityLabel"
                     text="AvailableQuantity"
-                    required="true"
-                    
+                    visible="false"
                 />
                 <Input
+                    visible="false"
                     id="idAQuantityInput"
                     value="{localModel>/availability}"
-                    
                 />
                 <Label
                     id="idAuthorLabel"

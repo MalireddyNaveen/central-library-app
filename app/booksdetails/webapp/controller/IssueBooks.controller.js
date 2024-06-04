@@ -12,13 +12,8 @@ sap.ui.define([
 
         return Controller.extend("com.app.booksdetails.controller.IssueBooks", {
             onInit: function () {
-                
                 var oTable = this.byId("idIssueBooks");
- 
-         
-                var oColumn1 = oTable.getColumns()[6]; // Index 1 represents the second column
-                  
-                // Hide the column
+                var oColumn1 = oTable.getColumns()[6]; 
                 oColumn1.setVisible(false);
             },
             onAcceptReservedBook: async function (oEvent) {
