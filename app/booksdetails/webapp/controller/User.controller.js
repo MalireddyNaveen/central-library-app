@@ -85,7 +85,6 @@ sap.ui.define([
                 }
                 this.oNotifyDialog.open();
                 const oObjectPage = this.getView().byId("idloginDialog");
-
                 oObjectPage.bindElement(`/Users(${this.ID})`);
                 
             },

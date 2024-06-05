@@ -167,6 +167,11 @@ sap.ui.define([
                         MessageToast.show("Book already exsist")
                         return
                     }
+                    const oISBNExist = await this.checkISBN(oModel, oPayload.ISBN)
+                    if (oISBNExist) {
+                        MessageToast.show("Book with ISBN already exsist")
+                        return
+                    }
                     await this.createData(oModel, oPayload, "/Books");
                     this.getView().byId("idBookTable").getBinding("items").refresh();
 
@@ -184,6 +189,25 @@ sap.ui.define([
                     oModel.read("/Books", {
                         filters: [
                             new Filter("title", FilterOperator.EQ, stitle),
+                            //new Filter("ISBN", FilterOperator.EQ, sISBN)
+
+                        ],
+                        success: function (oData) {
+                            resolve(oData.results.length > 0);
+                        },
+                        error: function () {
+                            reject(
+                                "An error occurred while checking username existence."
+                            );
+                        }
+                    })
+                })
+            },
+            checkISBN: async function (oModel, sISBN) {
+                return new Promise((resolve, reject) => {
+                    oModel.read("/Books", {
+                        filters: [
+                            //new Filter("title", FilterOperator.EQ, stitle),
                             new Filter("ISBN", FilterOperator.EQ, sISBN)
 
                         ],
