@@ -30,10 +30,8 @@
          
         alternateRowColors="true"
         backgroundDesign="Transparent"
-       
-        items="{ path:'/ActiveLoans',  parameters : {
-            $count : true
-        }}"
+       items="{activeLoans}"
+        
     >
         <columns>
             <Column id="idIsbnColumn">
@@ -50,7 +48,7 @@
                 <cells>
                     <Text
                         id="idBISBNvalue"
-                        text="{notify}"
+                        text="{notify} on {issueDate}"
                     />
                     
                 </cells>

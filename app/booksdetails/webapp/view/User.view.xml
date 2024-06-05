@@ -62,7 +62,7 @@
                 </expandedContent>
  
                 <actions>
-					<m:Button tooltip="Notification" icon="sap-icon://bell" type="Transparent" press="onNotificationPress"/>
+					<m:Button tooltip="Notification" text="" icon="sap-icon://bell" type="Transparent" press="onNotificationPress"/>
 					
 				</actions>
             </ObjectPageDynamicHeaderTitle>
@@ -216,7 +216,7 @@
                                 <m:items>
                                     <m:ColumnListItem
                                         id="idBooksTableColListItemUserLoans"
-                                        type="Navigation"
+                                        
                                     >
                                         <m:cells>
                                             <m:Text
@@ -307,7 +307,7 @@
                                 <m:items>
                                     <m:ColumnListItem
                                         id="idBooksTableColListItem"
-                                        type="Navigation"
+                                        
                                     >
                                         <m:cells>
                                             <m:Text

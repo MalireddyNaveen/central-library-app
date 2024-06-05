@@ -76,7 +76,7 @@ sap.ui.define([
 
                     Promise.all(aISBNs.map(function (sISBN) {
                         return new Promise(function (resolve, reject) {
-                            resolve(sISBN + " Successfully Deleted");
+                            resolve( " Successfully closed");
                         });
                     })).then(function (aMessages) {
                         aMessages.forEach(function (sMessage) {

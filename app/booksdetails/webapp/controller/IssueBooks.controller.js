@@ -46,7 +46,7 @@ sap.ui.define([
                     userId_ID: oSelectedBook.user.ID,
                     issueDate: now,
                     dueDate: current,
-                    notify:`Your reserved book  title "${oSelectedBook.book.title}" is issued`,
+                    notify:`Hey! reserved book with  title "${oSelectedBook.book.title}" is issued`,
                     bookId:{
                         availability:oAval
                     }

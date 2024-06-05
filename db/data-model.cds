@@ -2,7 +2,7 @@ namespace my.bookshop;
 
 using {cuid} from '@sap/cds/common';
 
-
+using {reusable.types as types} from './resuable_types';
 entity Books : cuid {
 
   ISBN          : String;
@@ -23,8 +23,8 @@ entity Books : cuid {
 entity Users : cuid {
   userName    : String not null;
   password    : String not null;
-  email       : String not null;
-  phoneNumber : Integer64 not null;
+  email       : types.Email not null;
+  phoneNumber : types.PhoneNumber not null;
   Address     : String not null;
   // books       : Association to many Books
   //                 on books.users = $self;

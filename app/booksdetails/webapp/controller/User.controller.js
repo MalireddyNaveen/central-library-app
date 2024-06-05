@@ -38,6 +38,10 @@ sap.ui.define([
                 }
                 var oSelectedBook=this.byId("idBooksTable").getSelectedItem().getBindingContext().getObject()
                 console.log(oSelectedBook.availability)
+                if(oSelectedBook.availability===0){
+                    MessageToast.show("Book not available")
+                    return
+                }
                 var oQuantity=oSelectedBook.availability-1;
                 console.log(oQuantity)
                 
@@ -80,6 +84,9 @@ sap.ui.define([
                     this.oNotifyDialog = await this.loadFragment("Notify")
                 }
                 this.oNotifyDialog.open();
+                const oObjectPage = this.getView().byId("idloginDialog");
+
+                oObjectPage.bindElement(`/Users(${this.ID})`);
                 
             },
             

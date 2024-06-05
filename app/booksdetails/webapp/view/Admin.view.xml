@@ -257,7 +257,7 @@
                 <items>
                     <ColumnListItem
                         id="idBooksTableColListItem"
-                        type="Navigation"
+                       
                     >
                         <cells>
                             <Text

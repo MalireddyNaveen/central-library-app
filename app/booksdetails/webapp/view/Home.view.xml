@@ -4,7 +4,7 @@
     controllerName="com.app.booksdetails.controller.Home"
 >
     <App>
-        <Page
+        <Page id="pageid"
             title="Artihcus Library"
             class="page"
         >
