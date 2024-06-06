@@ -22,18 +22,18 @@
                 </f:heading>
 
                 <f:navigationActions>
-                    <!-- <Button
+                    <Button
                         id="idBtnFullScreen"
                         width="80%"
-                        icon="sap-icon://customer"
+                        tooltip="LogOut"
+                        icon="sap-icon://log"
                         type="Transparent"
-                    /> -->
-                    <!-- <Button
-                        id="idBtnDecline"
-                        icon="sap-icon://decline"
-                        type="Transparent"
-                    /> -->
+                        press="OnSignOutPress"
+                    />
+                    
+                    
                 </f:navigationActions>
+                 
             </f:DynamicPageTitle>
         </f:title>
         <f:header>
@@ -41,6 +41,7 @@
                 id="idDynamicPageHeader"
                 pinnable="true"
             >
+            
                 <HBox
                     id="idFilterHLayout"
                     alignContent="SpaceAround"

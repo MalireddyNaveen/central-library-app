@@ -5,7 +5,9 @@
     xmlns:mvc="sap.ui.core.mvc"
     displayBlock="true"
     xmlns="sap.m"
+    
 >
+
     <!-- <List id="idUserLoans" items="{path:'/BooksLoan'}">
     <StandardListItem  id="ss" title="{users}" counter="{users}"></StandardListItem>
     </List> -->

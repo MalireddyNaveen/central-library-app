@@ -68,11 +68,12 @@ sap.ui.define([
                             MessageToast.show("Login Successful");
                             if (usertype === "Non Admin") {
                                 var oRouter = this.getOwnerComponent().getRouter();
-                                oRouter.navTo("RouteUser", { id: userId })
+                                oRouter.navTo("RouteUser", { id: userId },true)
+                                
                             }
                             else {
                                 var oRouter = this.getOwnerComponent().getRouter();
-                                oRouter.navTo("RouteAdmin", { id: userId })
+                                oRouter.navTo("RouteAdmin", { id: userId },true)
                             }
                         } else {
                             MessageToast.show("Invalid username or password.")

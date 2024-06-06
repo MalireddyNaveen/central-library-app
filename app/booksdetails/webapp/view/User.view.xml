@@ -63,7 +63,7 @@
  
                 <actions>
 					<m:Button tooltip="Notification" text="" icon="sap-icon://bell" type="Transparent" press="onNotificationPress"/>
-					
+					<m:Button tooltip="logout" icon="sap-icon://log" press="OnSignOutPress"></m:Button>
 				</actions>
             </ObjectPageDynamicHeaderTitle>
         </headerTitle>

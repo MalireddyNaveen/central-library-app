@@ -151,10 +151,10 @@ sap.ui.define([
             },
             onCreateBook: async function () {
                 var oPayload = this.getView().getModel("localModel").getProperty("/"),
-                
+
                     oModel = this.getView().getModel("ModelV2");
-                    oPayload.availability=oPayload.quantity;
-                    this.getView().getModel("localModel").setData(oPayload);
+                oPayload.availability = oPayload.quantity;
+                this.getView().getModel("localModel").setData(oPayload);
                 if (!(oPayload.ISBN && oPayload.author && oPayload.availability && oPayload.genre && oPayload.language && oPayload.publisher && oPayload.quantity && oPayload.title)) {
                     MessageToast.show("Enter all details");
                     return
@@ -228,8 +228,18 @@ sap.ui.define([
                     var aISBNs = [];
                     aSelectedItems.forEach(function (oSelectedItem) {
                         var sISBN = oSelectedItem.getBindingContext().getObject().title;
-                        aISBNs.push(sISBN);
-                        oSelectedItem.getBindingContext().delete("$auto");
+                        var oQuantity1 = oSelectedItem.getBindingContext().getObject().quantity
+                        var oAQuantity1 = oSelectedItem.getBindingContext().getObject().availability
+
+
+                        if (oQuantity1 === oAQuantity1) {
+                            aISBNs.push(sISBN);
+                            oSelectedItem.getBindingContext().delete("$auto");
+                        }
+                        else {
+                            MessageToast.show("Book was in active loan")
+                            return
+                        }
                     });
 
                     Promise.all(aISBNs.map(function (sISBN) {
@@ -376,14 +386,14 @@ sap.ui.define([
                 })
                 this.getView().byId("idBookTable").getBinding("items").refresh();
             },
-
-
             onClose: function () {
                 if (this.oEditBooksDialog.isOpen()) {
                     this.oEditBooksDialog.close();
                 }
             },
-
-
+            OnSignOutPress: function () {
+                var oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo("RouteHome", {}, true);
+            }
         });
     });

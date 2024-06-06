@@ -94,6 +94,10 @@ sap.ui.define([
                     this.oNotifyDialog.close()
                 }
             },
+            OnSignOutPress:function(){
+                var oRouter = this.getOwnerComponent().getRouter();
+                                oRouter.navTo("RouteHome", { },true)
+            }
 
         });
     });
