@@ -23,6 +23,7 @@ sap.ui.define([
                     email: "",
                     phoneNumber: 0,
                     Address: "",
+                    exsist:false,
                     userType: "Non Admin"
 
                 });
@@ -65,6 +66,10 @@ sap.ui.define([
                         if (oData.results.length > 0) {
                             var userId = oData.results[0].ID;
                             var usertype = oData.results[0].userType;
+                            if(!(oData.results[0].exsist === true)){
+                                MessageToast.show("Not a user")
+                               return
+                            }
                             MessageToast.show("Login Successful");
                             if (usertype === "Non Admin") {
                                 var oRouter = this.getOwnerComponent().getRouter();
@@ -115,7 +120,7 @@ sap.ui.define([
                 var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
                 var phoneRegex=/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/
                 if(!(emailRegex.test(oPayload.email)&&phoneRegex.test(oPayload.phoneNumber))){
-                    MessageToast.show("please enter valid email and password")
+                    MessageToast.show("please enter valid Email and PhoneNumber")
                     return
                 }
                 try {
@@ -211,6 +216,17 @@ sap.ui.define([
                 }
             },
 
+            AvailableBooksBtn: async function () {
+                if (!this.libraryinfo) {
+                    this.libraryinfo = await this.loadFragment("libraryinfo")
+                }
+                this.libraryinfo.open();
+            },
+            onlibraryclosedialog: function () {
+                if(this.libraryinfo.isOpen()){
+                this.libraryinfo.close()
+                }
+            },
 
         });
     });

@@ -13,8 +13,9 @@ sap.ui.define([
         return Controller.extend("com.app.booksdetails.controller.IssueBooks", {
             onInit: function () {
                 var oTable = this.byId("idIssueBooks");
-                var oColumn1 = oTable.getColumns()[6]; 
+                var oColumn1 = oTable.getColumns()[6];
                 oColumn1.setVisible(false);
+                
             },
             onAcceptReservedBook: async function (oEvent) {
                 console.log(this.byId("idIssueBooks").getSelectedItem().getBindingContext().getObject())
@@ -28,27 +29,31 @@ sap.ui.define([
                     return
                 }
                 var oSelectedBook = this.byId("idIssueBooks").getSelectedItem().getBindingContext().getObject(),
-                oAval=oSelectedBook.book.availability-1
+                    oAval = oSelectedBook.book.availability - 1
                 console.log(oSelectedBook.book_ID);
-                // var currentDate = new Date();
-                // var duedate = currentDate.setMonth(currentDate.getMonth() + 1);
+                
                 var now = new Date();
-                if (now.getMonth() == 11) {
-                    var current = new Date(now.getFullYear() + 1, 0, 1);
+                var current;
+
+                if (now.getMonth() === 11) {
+                    current = new Date(now.getFullYear() + 1, 0, now.getDate());
                 } else {
-                    var current = new Date(now.getFullYear(), now.getMonth() + 1);
-                    console.log(current)
+                    const nextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+                    const lastDayOfMonth = new Date(nextMonth - 1);
+                    const lastDay = lastDayOfMonth.getDate();
+                    current = new Date(now.getFullYear(), now.getMonth() + 1, Math.min(now.getDate(), lastDay));
                 }
 
-                
+                console.log(current);
+
                 const userModel = new sap.ui.model.json.JSONModel({
                     bookId_ID: oSelectedBook.book.ID,
                     userId_ID: oSelectedBook.user.ID,
                     issueDate: now,
                     dueDate: current,
-                    notify:`Hey! reserved book with  title "${oSelectedBook.book.title}" is issued`,
-                    bookId:{
-                        availability:oAval
+                    notify: `Hey! reserved book with  title "${oSelectedBook.book.title}" is issued`,
+                    bookId: {
+                        availability: oAval
                     }
 
                 });
@@ -62,11 +67,11 @@ sap.ui.define([
                     sap.m.MessageBox.success("Book Accepted");
                     this.byId("idIssueBooks").getSelectedItem().getBindingContext().delete("$auto");
                     oModel.update("/Books(" + oSelectedBook.book.ID + ")", oPayload.bookId, {
-                        success: function() {
-                            // this.getView().byId("idBooksTable").getBinding("items").refresh();
+                        success: function () {
+                            // this.getView().byId("idIssueBooks").getBinding("items").refresh();
                             //this.oEditBooksDialog.close();
                         },
-                        error: function(oError) {
+                        error: function (oError) {
                             //this.oEditBooksDialog.close();
                             sap.m.MessageBox.error("Failed to update book: " + oError.message);
                         }.bind(this)

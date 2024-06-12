@@ -26,9 +26,9 @@
                         id="idBtnFullScreen"
                         width="80%"
                         tooltip="LogOut"
-                        icon="sap-icon://log"
+                        icon="sap-icon://bell"
                         type="Transparent"
-                        press="OnSignOutPress"
+                        press="onAdminNotificationPress"
                     />
                     
                     

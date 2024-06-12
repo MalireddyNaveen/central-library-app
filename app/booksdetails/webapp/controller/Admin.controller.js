@@ -1,16 +1,19 @@
 sap.ui.define([
+    
     "./BaseController",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
     "sap/ui/model/json/JSONModel",
     "sap/m/MessageBox",
     "sap/m/Token",
-    "sap/m/MessageToast"
+    "sap/m/MessageToast",
+    "sap/ui/model/odata/v2/ODataModel",
+
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, Filter, FilterOperator, JSONModel, MessageBox, Token, MessageToast) {
+    function (Controller, Filter, FilterOperator, JSONModel, MessageBox, Token, MessageToast, ODataModel) {
         "use strict";
 
         return Controller.extend("com.app.booksdetails.controller.Admin", {
@@ -159,6 +162,10 @@ sap.ui.define([
                     MessageToast.show("Enter all details");
                     return
                 }
+                if(!(typeof(parseInt(oPayload.quantity))==="number")){
+                    MessageToast.show("Quantity should be numbers")
+                    return
+                }
 
 
                 try {
@@ -286,8 +293,9 @@ sap.ui.define([
             },
             onIssueBooksFilterPress: function () {
                 var oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo("RouteIssueBooks")
-                this.getView().byId("idIssueBooks").getBinding("items").refresh();
+                oRouter.navTo("RouteIssueBooks");
+               
+                
             },
             onUpdateBtnPress: async function () {
                 var oSelected = this.byId("idBookTable").getSelectedItems();
@@ -376,8 +384,7 @@ sap.ui.define([
                     this.oEditBooksDialog.close();
                     sap.m.MessageBox.error("Some technical Issue");
                 }
-
-
+                
                 var oDataModel = new sap.ui.model.odata.v2.ODataModel({
                     serviceUrl: "https://port4004-workspaces-ws-ttkcq.us10.trial.applicationstudio.cloud.sap/v2/BooksSRV",
                     defaultBindingMode: sap.ui.model.BindingMode.TwoWay,
@@ -391,9 +398,56 @@ sap.ui.define([
                     this.oEditBooksDialog.close();
                 }
             },
-            OnSignOutPress: function () {
-                var oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo("RouteHome", {}, true);
+            onAdminNotificationPress:async function(){
+                if (!this.oLoginDialog) {
+                    this.oLoginDialog = await this.loadFragment("NewUserSignUp")
+                }
+                this.oLoginDialog.open();
+            },
+            onCloseDialog1:function(){
+                if (this.oLoginDialog.isOpen()) {
+                    this.oLoginDialog.close()
+                }
+            },
+            onConfromPress:async function(oEvent){
+                var oModel = this.getView().getModel("ModelV2");
+                var oSelectedItem = oEvent.getSource().getParent().getParent();
+    
+                // Get the data bound to the selected item
+                var oBindingContext = oSelectedItem.getBindingContext();
+                
+                // Get the data object associated with the selected item
+                var oSelectedData = oBindingContext.getObject();
+                console.log(oSelectedData)
+                oSelectedData.exsist=true;
+                var newBookModel = new sap.ui.model.json.JSONModel({
+                    exsist:true
+                });
+
+                this.getView().setModel(newBookModel, "newBookModel");
+    
+                console.log(oSelectedData)
+                try {
+                    // Assuming your update method is provided by your OData V2 model
+                    oModel.update("/Users(" + oSelectedData.ID + ")", oSelectedData, {
+                        success: function () {
+                            MessageToast.show("Accepted")
+            
+                        }.bind(this),
+                        error: function (oError) {
+                           
+                            sap.m.MessageBox.error("Failed to update User: " );
+                        }.bind(this)
+                    });
+                } catch (error) {
+                    
+                    sap.m.MessageBox.error("Some technical Issue");
+                }
+                
+            },
+            onDeletePress:function (oEvent) {
+                oEvent.getSource().getParent().getParent().getBindingContext().delete("$auto");
+                
             }
         });
     });

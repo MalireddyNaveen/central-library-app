@@ -8,12 +8,9 @@
     
 >
 
-    <!-- <List id="idUserLoans" items="{path:'/BooksLoan'}">
-    <StandardListItem  id="ss" title="{users}" counter="{users}"></StandardListItem>
-    </List> -->
+    
     <Table
         id="idUserLoans"
-         
         alternateRowColors="true"
         backgroundDesign="Transparent"
         mode="MultiSelect"

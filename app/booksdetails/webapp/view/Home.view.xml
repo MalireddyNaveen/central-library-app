@@ -7,6 +7,7 @@
         <Page id="pageid"
             title="Artihcus Library"
             class="page"
+            titleAlignment="Center"
         >
             <headerContent>
                 <!-- <Title
@@ -16,7 +17,7 @@
                 <!-- <Text text="Books" />
                 <Text text="Writers" />
                 <Text text="sign up" /> -->
- 
+               <!-- <Button text="Books" press="AvailableBooksBtn"/> -->
                <Button text="Login" press="onClick"></Button>
                <Button text="SignUp" press="onClickSignUp"></Button>
             </headerContent>

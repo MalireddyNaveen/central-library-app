@@ -156,7 +156,7 @@
                                 mode="MultiSelect"
                                 alternateRowColors="true"
                                 items="{activeLoans}"
-                               
+
                             >
                                 <m:headerToolbar>
                                     <m:OverflowToolbar

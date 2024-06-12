@@ -1,0 +1,113 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+>
+    <Dialog
+        id="idloginDialog"
+        resizable="true"
+        draggable="true"
+        contentWidth="30%"
+        title="Login Details"
+    >
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <Text text="Notifications" />
+                </contentLeft>
+                <contentRight>
+                    <Button
+                        id="cancelbtn"
+                        icon="sap-icon://sys-cancel"
+                        press="onCloseDialog1"
+                        type="Reject"
+                    />
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <!-- <Table
+        id="idUserLoans"
+         
+        alternateRowColors="true"
+        backgroundDesign="Transparent"
+       items="{/Users}"
+        
+    >
+        <columns>
+            <Column id="idIsbnColumn">
+                <Text  ></Text>
+            </Column>
+            
+           
+        </columns>
+
+        <items >
+            <ColumnListItem visible="{=${exsist}?false:true}" id="idColumnListBooksLoan">
+                <cells >
+                   <HBox  id="idReservedBooksButton1">
+                            <Button 
+                                
+                                id="idReservedBooksButton"
+                                icon="sap-icon://customer"
+                                text="conform"
+                                
+                            />
+                        </HBox>
+                   
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+        -->
+        <!-- <List
+		items="{/Users}"
+		headerText="Products"
+		growing="true"
+		growingThreshold="4"
+		growingScrollToLoad="false">
+		<StandardListItem
+			title="{userName}"
+			description="{email}"
+			icon="}"
+			iconDensityAware="false"
+			iconInset="false" />
+	</List> -->
+       
+                <List
+                    id="idUserLoans"
+                    
+                    backgroundDesign="Transparent"
+                    items="{/Users}"
+                >
+                    <items >
+                        <CustomListItem visible="{=${exsist}?false:true}" id="idColumnListBooksLoan">
+                            <FlexBox justifyContent="SpaceAround">
+                    <items>
+                        
+                        <Text text="{userName}"/>
+                        <Text text="{email}"/>
+                        <Text visible="false" text="{password}"/>
+                        <Text text="{phoneNumber}"/>
+                        <Text visible="false" text="{Address}"/>
+                        <Text visible="false" text="{userType}"/>
+                        <Button
+                            id="idReservedBooksButton"
+                            icon="sap-icon://accept"
+                            
+                            press="onConfromPress"
+                        />
+                         <Button
+                            id="idRejectButton"
+                            icon="sap-icon://decline"
+                            
+                            press="onDeletePress"
+                        />
+                    </items>
+                </FlexBox>
+                            
+                        </CustomListItem>
+                    </items>
+                </List>
+            
+    </Dialog>
+</core:FragmentDefinition>
