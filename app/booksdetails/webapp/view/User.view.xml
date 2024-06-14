@@ -270,11 +270,18 @@
                                             id="idTableHeaderSpacer"
                                         />
                                         <m:Button
-                                            id="idBtnEdit"
+                                            id="idBtn"
                                             text="Reserve"
                                             type="Emphasized"
                                             press="onBorrowNewBookPress"
                                             tooltip="Click to Borrow"
+                                        />
+                                        <m:Button
+                                            id="idBtn1"
+                                            text="ReservedBooks"
+                                            type="Emphasized"
+                                            press="onReservedBooksPress"
+                                            tooltip="Click to see Reserved books"
                                         />
                                     </m:OverflowToolbar>
                                 </m:headerToolbar>

@@ -68,7 +68,7 @@ sap.ui.define([
                     this.byId("idIssueBooks").getSelectedItem().getBindingContext().delete("$auto");
                     oModel.update("/Books(" + oSelectedBook.book.ID + ")", oPayload.bookId, {
                         success: function () {
-                            // this.getView().byId("idIssueBooks").getBinding("items").refresh();
+                        
                             //this.oEditBooksDialog.close();
                         },
                         error: function (oError) {

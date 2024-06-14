@@ -1,5 +1,5 @@
 sap.ui.define([
-    
+
     "./BaseController",
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
@@ -162,7 +162,7 @@ sap.ui.define([
                     MessageToast.show("Enter all details");
                     return
                 }
-                if(!(typeof(parseInt(oPayload.quantity))==="number")){
+                if (!(typeof (parseInt(oPayload.quantity)) === "number")) {
                     MessageToast.show("Quantity should be numbers")
                     return
                 }
@@ -231,42 +231,85 @@ sap.ui.define([
             },
             onDeleteBtnPress: async function () {
                 var aSelectedItems = this.byId("idBookTable").getSelectedItems();
-                if (aSelectedItems.length > 0) {
-                    var aISBNs = [];
-                    aSelectedItems.forEach(function (oSelectedItem) {
-                        var sISBN = oSelectedItem.getBindingContext().getObject().title;
-                        var oQuantity1 = oSelectedItem.getBindingContext().getObject().quantity
-                        var oAQuantity1 = oSelectedItem.getBindingContext().getObject().availability
+                MessageBox.confirm("Are you sure you want to delete this row?", {
+                    onClose: function (oAction) {
+                        if (oAction === MessageBox.Action.OK) {
+                            if (aSelectedItems.length > 0) {
+                                var aISBNs = [];
+                                aSelectedItems.forEach(function (oSelectedItem) {
+                                    var sISBN = oSelectedItem.getBindingContext().getObject().title;
+                                    var oQuantity1 = oSelectedItem.getBindingContext().getObject().quantity
+                                    var oAQuantity1 = oSelectedItem.getBindingContext().getObject().availability
 
 
-                        if (oQuantity1 === oAQuantity1) {
-                            aISBNs.push(sISBN);
-                            oSelectedItem.getBindingContext().delete("$auto");
+
+                                    if (oQuantity1 === oAQuantity1) {
+                                        aISBNs.push(sISBN);
+                                        oSelectedItem.getBindingContext().delete("$auto");
+                                    }
+                                    else {
+                                        MessageToast.show("Book was in active loan")
+                                        return
+                                    }
+                                });
+
+                                Promise.all(aISBNs.map(function (sISBN) {
+                                    return new Promise(function (resolve, reject) {
+                                        resolve(sISBN + " Successfully Deleted");
+                                    });
+                                })).then(function (aMessages) {
+                                    aMessages.forEach(function (sMessage) {
+                                        MessageToast.show(sMessage);
+                                    });
+                                }).catch(function (oError) {
+                                    MessageToast.show("Deletion Error: " + oError);
+                                });
+
+                                this.getView().byId("idBookTable").removeSelections(true);
+                                this.getView().byId("idBookTable").getBinding("items").refresh();
+                            } else {
+                                MessageToast.show("Please Select Rows to Delete");
+                            };
+                            this.getView().byId("idBookTable").getBinding("items").refresh()
                         }
-                        else {
-                            MessageToast.show("Book was in active loan")
-                            return
-                        }
-                    });
+                    }
+                });
+                // if (aSelectedItems.length > 0) {
+                //     var aISBNs = [];
+                //     aSelectedItems.forEach(function (oSelectedItem) {
+                //         var sISBN = oSelectedItem.getBindingContext().getObject().title;
+                //         var oQuantity1 = oSelectedItem.getBindingContext().getObject().quantity
+                //         var oAQuantity1 = oSelectedItem.getBindingContext().getObject().availability
 
-                    Promise.all(aISBNs.map(function (sISBN) {
-                        return new Promise(function (resolve, reject) {
-                            resolve(sISBN + " Successfully Deleted");
-                        });
-                    })).then(function (aMessages) {
-                        aMessages.forEach(function (sMessage) {
-                            MessageToast.show(sMessage);
-                        });
-                    }).catch(function (oError) {
-                        MessageToast.show("Deletion Error: " + oError);
-                    });
 
-                    this.getView().byId("idBookTable").removeSelections(true);
-                    this.getView().byId("idBookTable").getBinding("items").refresh();
-                } else {
-                    MessageToast.show("Please Select Rows to Delete");
-                };
-                this.getView().byId("idBookTable").getBinding("items").refresh()
+                //         if (oQuantity1 === oAQuantity1) {
+                //             aISBNs.push(sISBN);
+                //             oSelectedItem.getBindingContext().delete("$auto");
+                //         }
+                //         else {
+                //             MessageToast.show("Book was in active loan")
+                //             return
+                //         }
+                //     });
+
+                //     Promise.all(aISBNs.map(function (sISBN) {
+                //         return new Promise(function (resolve, reject) {
+                //             resolve(sISBN + " Successfully Deleted");
+                //         });
+                //     })).then(function (aMessages) {
+                //         aMessages.forEach(function (sMessage) {
+                //             MessageToast.show(sMessage);
+                //         });
+                //     }).catch(function (oError) {
+                //         MessageToast.show("Deletion Error: " + oError);
+                //     });
+
+                //     this.getView().byId("idBookTable").removeSelections(true);
+                //     this.getView().byId("idBookTable").getBinding("items").refresh();
+                // } else {
+                //     MessageToast.show("Please Select Rows to Delete");
+                // };
+                // this.getView().byId("idBookTable").getBinding("items").refresh()
 
             },
             // onUpdateBtnPress: function () {
@@ -294,8 +337,8 @@ sap.ui.define([
             onIssueBooksFilterPress: function () {
                 var oRouter = this.getOwnerComponent().getRouter();
                 oRouter.navTo("RouteIssueBooks");
-               
-                
+
+
             },
             onUpdateBtnPress: async function () {
                 var oSelected = this.byId("idBookTable").getSelectedItems();
@@ -384,7 +427,7 @@ sap.ui.define([
                     this.oEditBooksDialog.close();
                     sap.m.MessageBox.error("Some technical Issue");
                 }
-                
+
                 var oDataModel = new sap.ui.model.odata.v2.ODataModel({
                     serviceUrl: "https://port4004-workspaces-ws-ttkcq.us10.trial.applicationstudio.cloud.sap/v2/BooksSRV",
                     defaultBindingMode: sap.ui.model.BindingMode.TwoWay,
@@ -398,56 +441,56 @@ sap.ui.define([
                     this.oEditBooksDialog.close();
                 }
             },
-            onAdminNotificationPress:async function(){
+            onAdminNotificationPress: async function () {
                 if (!this.oLoginDialog) {
                     this.oLoginDialog = await this.loadFragment("NewUserSignUp")
                 }
                 this.oLoginDialog.open();
             },
-            onCloseDialog1:function(){
+            onCloseDialog1: function () {
                 if (this.oLoginDialog.isOpen()) {
                     this.oLoginDialog.close()
                 }
             },
-            onConfromPress:async function(oEvent){
+            onConfromPress: async function (oEvent) {
                 var oModel = this.getView().getModel("ModelV2");
                 var oSelectedItem = oEvent.getSource().getParent().getParent();
-    
+
                 // Get the data bound to the selected item
                 var oBindingContext = oSelectedItem.getBindingContext();
-                
+
                 // Get the data object associated with the selected item
                 var oSelectedData = oBindingContext.getObject();
                 console.log(oSelectedData)
-                oSelectedData.exsist=true;
+                oSelectedData.exsist = true;
                 var newBookModel = new sap.ui.model.json.JSONModel({
-                    exsist:true
+                    exsist: true
                 });
 
                 this.getView().setModel(newBookModel, "newBookModel");
-    
+
                 console.log(oSelectedData)
                 try {
                     // Assuming your update method is provided by your OData V2 model
                     oModel.update("/Users(" + oSelectedData.ID + ")", oSelectedData, {
                         success: function () {
                             MessageToast.show("Accepted")
-            
+
                         }.bind(this),
                         error: function (oError) {
-                           
-                            sap.m.MessageBox.error("Failed to update User: " );
+
+                            sap.m.MessageBox.error("Failed to update User: ");
                         }.bind(this)
                     });
                 } catch (error) {
-                    
+
                     sap.m.MessageBox.error("Some technical Issue");
                 }
-                
+
             },
-            onDeletePress:function (oEvent) {
+            onDeletePress: function (oEvent) {
                 oEvent.getSource().getParent().getParent().getBindingContext().delete("$auto");
-                
+
             }
         });
     });

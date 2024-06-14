@@ -1,0 +1,150 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+>
+<Dialog
+        id="idloginDialog"
+        resizable="true"
+        draggable="true"
+        contentWidth="30%"
+        title="Login Details"
+    >
+        <customHeader>
+            <Bar>
+            <contentLeft>
+            <Text text="Login Details"></Text>
+            </contentLeft>
+                <contentRight>
+                    <Button
+                        id="cancelbtn"
+                        icon="sap-icon://sys-cancel"
+                        press="onCloseReserved"
+                        type="Reject"
+                    />
+                </contentRight>
+            </Bar>
+        </customHeader>
+<Table
+        id="idReservedBooks"
+         
+        alternateRowColors="true"
+        backgroundDesign="Transparent"
+        mode="MultiSelect"
+        items="{issueBooks}"
+       
+    >
+     
+     <!-- Header Tool Bar-->
+        <headerToolbar>
+            <OverflowToolbar id="idOverflowToolbar">
+                <Title
+                    id="idUserLoanTitle"
+                    text="Issue Books"
+                />
+                <ToolbarSpacer id="idtoolbar" />
+
+                <Button
+                    id="idbutton"
+                    type="Negative"
+                    text="Cancel"
+                    press="onCancelReservedBook"
+                />
+                
+            </OverflowToolbar>
+        </headerToolbar>
+
+        <columns>
+            <Column id="idBookIdColumn">
+                <Title
+                    id="idBookIdtitle"
+                    text="BookID"
+                />
+            </Column>
+            <Column id="idISBNColumn">
+                <Title
+                    id="idISBNtitle"
+                    text="ISBN"
+                />
+            </Column>
+            <Column id="idTitleColumn">
+                <Title
+                    id="idTitletitle"
+                    text="Title"
+                />
+            </Column>
+            <Column id="idUserIdColumn">
+                <Title
+                    id="idUserIdtitle"
+                    text="UserID"
+                />
+            </Column>
+             <Column id="idUserNameColumn">
+                <Title
+                    id="idUserNametitle"
+                    text="UserName"
+                />
+            </Column>
+            <Column id="idRequestedDateColumn">
+                <Title
+                    id="idRequestDatetitle"
+                    text="Request Date"
+                />
+            </Column>
+
+            <!-- <Column id="idAColumn">
+                <Title
+                    id="idAtitle"
+                    text="Avalilabity"
+                />
+            </Column> -->
+            <!-- <Column id="idbodColumn">
+                <Title
+                    id="idbodtitle"
+                    text="Due Date"
+                />
+            </Column> -->
+        </columns>
+
+        <items>
+            <ColumnListItem id="idColumnListBooksLoan">
+                <cells>
+                    <Text
+                        id="idBISBNvalue"
+                        text="{book/ID}"
+                    />
+                    <Text
+                        id="idBookTilevalue"
+                        text="{book/ISBN}"
+                    />
+                    <Text
+                        id="idBookISBNvalue"
+                        text="{book/title}"
+                    />
+                    <Text
+                        id="idBUserIDvalue"
+                        text="{user/ID}"
+                    />
+                     <Text
+                        id="idBUserNamevalue"
+                        text="{user/userName}"
+                    />
+                   
+                    <Text
+                        id="idIssuevalue"
+                        text="{reservedDate}"
+                    />
+                    <!-- <Text
+                        id="idAvaliablityvalue"
+                        text="{book/availability}"
+                    /> -->
+                    <!-- <Text
+                        id="idduevalue"
+                        text="{dueDate}"
+                    /> -->
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+    </Dialog>
+</core:FragmentDefinition>
