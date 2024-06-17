@@ -13,11 +13,11 @@
         <customHeader>
             <Bar>
             <contentLeft>
-            <Text text="Login Details"></Text>
+           
             </contentLeft>
                 <contentRight>
                     <Button
-                        id="cancelbtn"
+                        id="cancelbtn1"
                         icon="sap-icon://sys-cancel"
                         press="onCloseReserved"
                         type="Reject"
