@@ -8,6 +8,7 @@ modules:
   path: gen/srv
   requires:
   - name: central-library-application-db
+  - name: uaa_central-library-application
   provides:
   - name: srv-api
     properties:
@@ -38,6 +39,10 @@ modules:
     - artifacts:
       - comappbooksdetails.zip
       name: comappbooksdetails
+      target-path: resources/
+    - artifacts:
+      - comappcentrallibrary.zip
+      name: comappcentrallibrary
       target-path: resources/
 - name: comappbooksdetails
   type: html5
@@ -79,6 +84,16 @@ modules:
         existing_destinations_policy: ignore
   build-parameters:
     no-source: true
+- name: comappcentrallibrary
+  type: html5
+  path: app/central_library
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
 resources:
 - name: central-library-application-db
   type: com.sap.xs.hdi-container
@@ -96,10 +111,28 @@ resources:
   parameters:
     config:
       HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          - Authentication: NoAuthentication
+            HTML5.DynamicDestination: true
+            HTML5.ForwardAuthToken: true
+            Name: central-library-application-srv-api
+            ProxyType: Internet
+            Type: HTTP
+            URL: ~{srv-api/srv-url}
+          existing_destinations_policy: update
       version: 1.0.0
     service: destination
     service-name: central-library-application-destination-service
     service-plan: lite
+  requires:
+  - name: srv-api
 - name: uaa_central-library-application
   type: org.cloudfoundry.managed-service
   parameters:

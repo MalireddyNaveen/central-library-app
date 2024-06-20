@@ -231,7 +231,7 @@ sap.ui.define([
             },
             onDeleteBtnPress: async function () {
                 var aSelectedItems = this.byId("idBookTable").getSelectedItems();
-                MessageBox.confirm("Are you sure you want to delete this row?", {
+                MessageBox.confirm("Are you sure you want to delete this Book?", {
                     onClose: function (oAction) {
                         if (oAction === MessageBox.Action.OK) {
                             if (aSelectedItems.length > 0) {

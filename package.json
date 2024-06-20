@@ -1,28 +1,32 @@
 {
-    "name": "central-library-application",
-    "version": "1.0.0",
-    "description": "A simple CAP project.",
-    "repository": "<Add your repository here>",
-    "license": "UNLICENSED",
-    "private": true,
-    "dependencies": {
-        "@sap/cds": "^7",
-        "@sap/cds-odata-v2-adapter-proxy": "^1.9.21",
-        "express": "^4"
-    },
-    "devDependencies": {
-        "@cap-js/sqlite": "^1",
-        "@sap/cds-dk": "^7",
-        "@sap/eslint-plugin-cds": "^3",
-        "@sap/ux-specification": "^1.120.10",
-        "eslint": "^9",
-        "rimraf": "^3.0.2"
-    },
-    "scripts": {
-        "start": "cds-serve",
-        "watch-booksdetails": "cds watch --open booksdetails/webapp/index.html?sap-ui-xx-viewCache=false",
-        "undeploy": "cf undeploy central-library-application --delete-services --delete-service-keys --delete-service-brokers",
-        "build": "rimraf resources mta_archives && mbt build --mtar archive",
-        "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
-    }
+  "name": "central-library-application",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^7",
+    "@sap/cds-odata-v2-adapter-proxy": "^1.9.21",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^7",
+    "@sap/eslint-plugin-cds": "^3",
+    "@sap/ux-specification": "^1.120.10",
+    "eslint": "^9",
+    "rimraf": "^3.0.2"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-booksdetails": "cds watch --open booksdetails/webapp/index.html?sap-ui-xx-viewCache=false",
+    "undeploy": "cf undeploy central-library-application --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+    "watch-central_library": "cds watch --open central_library/webapp/index.html?sap-ui-xx-viewCache=false"
+  },
+  "sapux": [
+    "app/central_library"
+  ]
 }
